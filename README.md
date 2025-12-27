@@ -24,3 +24,76 @@ SafeMemo adalah program sederhana yang dibuat untuk mengamankan catatan pribadi 
 - Dekripsi catatan terenkripsi
 - Penyimpanan file `.enc`
 
+
+## Arsitektur Keamanan
+┌────────────────────────────────────────────────────────────────────────────┐
+│                               ALUR ENKRIPSI                                │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│   Password Pengguna                                                        │
+│          │                                                                 │
+│          ▼                                                                 │
+│   ┌───────────────────┐                                                    │
+│   │      PBKDF2       │◀── Salt (16 bytes, random)                        │ 
+│   │   SHA-256 Hash    │                                                    │
+│   │  100.000 iterasi  │                                                    │
+│   └─────────┬─────────┘                                                    │
+│             │                                                              │
+│             ▼                                                              │
+│     Derived Key (256-bit)                                                  │
+│             │                                                              │
+│             ▼                                                              │
+│   ┌────────────────────────────┐                                           │
+│   │      AES (Fernet Mode)      │                                          │
+│   │  Enkripsi + Autentikasi     │                                          │
+│   └─────────────┬──────────────┘                                           │
+│                 │                                                          │
+│                 ▼                                                          │
+│          Ciphertext Terenkripsi                                            │
+│                 │                                                          │
+│                 ▼                                                          │
+│   ┌────────────────────────────┐                                           │
+│   │     File .enc (Binary)      │                                          │
+│   │ [ salt | encrypted_data ]   │                                          │
+│   └────────────────────────────┘                                           │
+│                                                                            │
+│   Output: File catatan terenkripsi                                         │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+## Cara Download & Install
+
+### Prasyarat
+- Python 3.8 atau lebih tinggi
+- Git
+- pip
+
+### Clone Repository
+```bash
+git clone https://github.com/username/SafeMemo.git
+cd SafeMemo
+```
+
+### Install Dependency
+```bash
+pip install -r requirements.txt
+```
+
+## Cara Menjalankan Program
+```bash
+python safememo.py
+```
+
+## Struktur Project
+```
+SafeMemo/
+│
+├── safememo.py          # Program utama
+├── README.md            # Dokumentasi project
+├── requirements.txt     # Daftar dependency
+└── .gitignore
+```
+
+
+
