@@ -91,10 +91,20 @@ python safememo.py
 ```
 SafeMemo/
 │
-├── safememo.py          # Program utama
-├── README.md            # Dokumentasi project
-├── requirements.txt     # Daftar dependency
+├── core/
+│   ├── __init__.py
+│   ├── crypto_core.py
+│   ├── kdf.py
+│   └── utils.py
+│
+├── cli_text.py
+├── cli_file.py
+├── gui_app.py
+├── tamper_demo.py
+├── requirements.txt
+├── README.md
 └── .gitignore
+
 ```
 
 
