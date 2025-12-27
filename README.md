@@ -24,7 +24,7 @@ SafeMemo adalah program sederhana yang dibuat untuk mengamankan catatan pribadi 
 - Dekripsi catatan terenkripsi
 - Penyimpanan file `.enc`
 
-
+```
 ## Arsitektur Keamanan
 ┌────────────────────────────────────────────────────────────────────────────┐
 │                               ALUR ENKRIPSI                                │
@@ -60,6 +60,7 @@ SafeMemo adalah program sederhana yang dibuat untuk mengamankan catatan pribadi 
 │   Output: File catatan terenkripsi                                         │
 │                                                                            │
 └────────────────────────────────────────────────────────────────────────────┘
+```
 
 
 ## Cara Download & Install
